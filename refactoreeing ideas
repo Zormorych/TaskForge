@@ -17,3 +17,8 @@ ResourceNotFoundException al service por si falla
 En TaskRepositoryPort
 
 añadir GetTaskByIdUseCase
+
+--------------------------
+tengo que añadir mapper dedicados para evitar mapper manual en controller
+
+manejo global de excepciones de dominio
