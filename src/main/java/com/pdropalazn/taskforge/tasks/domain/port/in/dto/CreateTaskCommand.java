@@ -3,7 +3,6 @@ package com.pdropalazn.taskforge.tasks.domain.port.in.dto;
 
 import com.pdropalazn.taskforge.identity.domain.model.vo.UserId;
 import com.pdropalazn.taskforge.tasks.domain.model.TaskPriority;
-import com.pdropalazn.taskforge.tasks.domain.model.TaskStatus;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskDescription;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskTitle;
 
