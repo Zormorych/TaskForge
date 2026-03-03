@@ -28,7 +28,7 @@ public class TaskController {
     }
 
 
-    //RequestBody sirve para vinculasr el body del JSON a un objeto Java
+    //RequestBody sirve para vincular el body del JSON a un objeto Java
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody CreateTaskRequest request) {
