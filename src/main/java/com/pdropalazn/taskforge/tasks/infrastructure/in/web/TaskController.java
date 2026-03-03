@@ -8,6 +8,7 @@ import com.pdropalazn.taskforge.tasks.domain.port.in.dto.CreateTaskCommand;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.CreateTaskRequest;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.TaskResponse;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.mapper.TaskWebMapper;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskResponse> createTask(@RequestBody CreateTaskRequest request) {
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody CreateTaskRequest request) {
         CreateTaskCommand command = mapper.toCommand(request);
         Task savedTask = createTaskUseCase.create(command);
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(savedTask));

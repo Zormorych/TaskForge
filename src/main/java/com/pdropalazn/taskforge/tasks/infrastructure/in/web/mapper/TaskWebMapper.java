@@ -9,8 +9,6 @@ import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.CreateTaskReques
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.TaskResponse;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
 @Component
 public class TaskWebMapper {
 
@@ -20,7 +18,7 @@ public class TaskWebMapper {
                 new TaskTitle(request.title()),
                 request.description() == null ? null : new TaskDescription(request.description()),
                 request.priority(),
-                request.dateTime() == null ? LocalDateTime.now() : request.dateTime(),
+                request.dateTime(),
                 request.assigneeId() == null ? null : new UserId(request.assigneeId())
         );
     }
