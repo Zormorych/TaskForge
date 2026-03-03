@@ -2,6 +2,7 @@ package com.pdropalazn.taskforge.tasks.api;
 
 
 import com.pdropalazn.taskforge.identity.domain.model.vo.UserId;
+import com.pdropalazn.taskforge.tasks.api.request.CreateTaskRequest;
 import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.TaskPriority;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskDescription;
