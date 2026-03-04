@@ -16,13 +16,13 @@ public class Task {
     private TaskDescription description;
     private TaskStatus status;
     private TaskPriority priority;
-    private LocalDateTime dateTime;
+    private LocalDateTime dueDate;
     private UserId userAssignedId;
 
 
     private Task(TaskId id, UUID projectId, TaskTitle title,
-                TaskDescription description, TaskPriority priority,
-                LocalDateTime dateTime, UserId userAssignedId){
+                 TaskDescription description, TaskPriority priority,
+                 LocalDateTime dueDate, UserId userAssignedId){
 
         this.taskId = id;
         this.projectId = projectId;
@@ -31,7 +31,7 @@ public class Task {
 
         this.status = TaskStatus.TO_DO; //las tareas empiezan de forma predeterminada en ese estado
         this.priority = priority;
-        this.dateTime = dateTime;
+        this.dueDate = dueDate;
         this.userAssignedId = userAssignedId;
 
     }
@@ -39,7 +39,7 @@ public class Task {
     //por ahora se aloja aqui la unica forma de crear una Tarea (y de generar un nuevo UUID con dicha tarea recien creada)
     public static Task create(UUID projectId, TaskTitle title,
                               TaskDescription description, TaskPriority priority,
-                              LocalDateTime dateTime, UserId userAssignedId) {
+                              LocalDateTime dueDate, UserId userAssignedId) {
 
         if (projectId == null) {
             throw new IllegalArgumentException("Project id cannot be null");
@@ -47,12 +47,9 @@ public class Task {
         if (priority == null) {
             throw new IllegalArgumentException("Priority cannot be null");
         }
-        if (dateTime == null) {
-            throw new IllegalArgumentException("Task dateTime cannot be null");
-        }
 
         return new Task(TaskId.generate(), projectId, title,
-                description, priority, dateTime, userAssignedId);
+                description, priority, dueDate, userAssignedId);
     }
 
     public TaskId getTaskId() {
@@ -79,8 +76,8 @@ public class Task {
         return priority;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getDueDate() {
+        return dueDate;
     }
 
     public UserId getUserAssignedId() {

@@ -31,7 +31,7 @@ public class TaskWebMapper {
                 task.getDescription() == null ? null : task.getDescription().description(),
                 task.getStatus(),
                 task.getPriority(),
-                task.getDateTime(),
+                task.getDueDate(),
                 task.getUserAssignedId() == null ? null : task.getUserAssignedId().value()
         );
     }
