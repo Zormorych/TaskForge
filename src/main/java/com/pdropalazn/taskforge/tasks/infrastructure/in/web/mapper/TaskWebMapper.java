@@ -23,6 +23,7 @@ public class TaskWebMapper {
         );
     }
 
+    //al postear una tarea (se postea la estructura del Command, se ejecuta el metodo toResponse
     public TaskResponse toResponse(Task task) {
         return new TaskResponse(
                 task.getTaskId().value(),
