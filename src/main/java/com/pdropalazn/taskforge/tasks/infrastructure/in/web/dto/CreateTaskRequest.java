@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-//esta es la tarea que va al postman
+//DTO que representa lo que el cliente envía al back por ejemplo un POST/tasks
 public record CreateTaskRequest(
         @NotNull UUID projectId,
         @NotBlank @Size(min = 3, max = 200) String title,

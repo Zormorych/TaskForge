@@ -6,6 +6,7 @@ import com.pdropalazn.taskforge.tasks.domain.model.TaskStatus;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+//representa lo que el backend devuelve al cliente, por ejemplo al pOstman
 public record TaskResponse(
         UUID taskId,
         UUID projectId,

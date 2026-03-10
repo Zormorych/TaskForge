@@ -4,7 +4,7 @@ import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskId;
 import com.pdropalazn.taskforge.tasks.domain.port.in.CreateTaskUseCase;
 import com.pdropalazn.taskforge.tasks.domain.port.in.GetTaskByIdUseCase;
-import com.pdropalazn.taskforge.tasks.domain.port.in.dto.CreateTaskCommand;
+import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.CreateTaskCommand;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.CreateTaskRequest;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.TaskResponse;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.mapper.TaskWebMapper;
