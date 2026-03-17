@@ -1,4 +1,4 @@
-package com.pdropalazn.taskforge.tasks.infrastructure.out.persistence.inmemory;
+package com.pdropalazn.taskforge.tasks.infrastructure.out.persistence.inmemory.repository;
 
 
 import com.pdropalazn.taskforge.tasks.domain.model.Task;

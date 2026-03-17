@@ -1,0 +1,4 @@
+package com.pdropalazn.taskforge.tasks.application.service;
+
+public class GetTaskByIdServiceTest {
+}
