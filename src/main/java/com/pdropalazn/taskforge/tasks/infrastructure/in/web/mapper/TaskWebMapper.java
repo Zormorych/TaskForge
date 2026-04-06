@@ -5,8 +5,11 @@ import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskDescription;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskTitle;
 import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.CreateTaskCommand;
+import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.UpdateTaskCommand;
+import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskId;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.CreateTaskRequest;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.TaskResponse;
+import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.UpdateTaskRequest;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +18,18 @@ public class TaskWebMapper {
     public CreateTaskCommand toCommand(CreateTaskRequest request) {
         return new CreateTaskCommand(
                 request.projectId(),
+                new TaskTitle(request.title()),
+                request.description() == null ? null : new TaskDescription(request.description()),
+                request.priority(),
+                request.dueDate(),
+                request.assigneeId() == null ? null : new UserId(request.assigneeId())
+        );
+    }
+
+    // Added for update task feature
+    public UpdateTaskCommand toCommand(String taskId, UpdateTaskRequest request) {
+        return new UpdateTaskCommand(
+                TaskId.from(taskId),
                 new TaskTitle(request.title()),
                 request.description() == null ? null : new TaskDescription(request.description()),
                 request.priority(),

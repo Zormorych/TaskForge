@@ -88,4 +88,40 @@ public class TaskTest {
      //Assert
         assertEquals(TaskStatus.IN_PROGRESS, task.getStatus());
     }
+
+    @Test
+    void shouldUpdateEditableFields(){
+
+        // Arrange
+        Task task = Task.create(
+                UUID.randomUUID(),
+                new TaskTitle("Original title"),
+                new TaskDescription("Original description"),
+                TaskPriority.LOW,
+                LocalDateTime.of(2026, 4, 12, 23, 59),
+                new UserId(UUID.randomUUID())
+        );
+
+        TaskTitle updatedTitle = new TaskTitle("Updated title");
+        TaskDescription updatedDescription = new TaskDescription("Updated description");
+        LocalDateTime updatedDueDate = LocalDateTime.of(2026, 5, 1, 12, 0);
+        UserId updatedAssigneeId = new UserId(UUID.randomUUID());
+
+        // Act
+        // Added for update task feature
+        task.updateDetails(
+                updatedTitle,
+                updatedDescription,
+                TaskPriority.HIGH,
+                updatedDueDate,
+                updatedAssigneeId
+        );
+
+        // Assert
+        assertEquals(updatedTitle, task.getTitle());
+        assertEquals(updatedDescription, task.getDescription());
+        assertEquals(TaskPriority.HIGH, task.getPriority());
+        assertEquals(updatedDueDate, task.getDueDate());
+        assertEquals(updatedAssigneeId, task.getUserAssignedId());
+    }
 }

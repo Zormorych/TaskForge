@@ -30,11 +30,13 @@ public class TaskJpaMapper {
                 new TaskId(entity.getId()),
                 entity.getProjectId(),
                 new TaskTitle(entity.getTitle()),
-                new TaskDescription(entity.getDescription()),
+                // Added for update task feature
+                // Keeps nullable editable fields consistent when reading from JPA.
+                entity.getDescription() == null ? null : new TaskDescription(entity.getDescription()),
                 entity.getStatus(),
                 entity.getPriority(),
                 entity.getDueDate(),
-                new UserId(entity.getAssigneeId())
+                entity.getAssigneeId() == null ? null : new UserId(entity.getAssigneeId())
         );
     }
 }

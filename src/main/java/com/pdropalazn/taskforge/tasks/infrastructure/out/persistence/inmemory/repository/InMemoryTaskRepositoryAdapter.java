@@ -4,6 +4,7 @@ package com.pdropalazn.taskforge.tasks.infrastructure.out.persistence.inmemory.r
 import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskId;
 import com.pdropalazn.taskforge.tasks.domain.port.repository.TaskRepositoryPort;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 //servirá para inyectar TaskRepositoryPort sin JPA aún
 //ConcurrentHashMap mejor que HashMap por si entran varias petis a la vez
 @Repository
+@Profile("in-memory")
 public class InMemoryTaskRepositoryAdapter implements TaskRepositoryPort {
 
     private final Map<TaskId, Task> temporalStorage = new ConcurrentHashMap<>(); //esto hace que lo que guardo viva en memoria RAM, cuando la app la cierro se libera

@@ -4,9 +4,12 @@ import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskId;
 import com.pdropalazn.taskforge.tasks.domain.port.in.CreateTaskUseCase;
 import com.pdropalazn.taskforge.tasks.domain.port.in.GetTaskByIdUseCase;
+import com.pdropalazn.taskforge.tasks.domain.port.in.UpdateTaskUseCase;
 import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.CreateTaskCommand;
+import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.UpdateTaskCommand;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.CreateTaskRequest;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.TaskResponse;
+import com.pdropalazn.taskforge.tasks.infrastructure.in.web.dto.UpdateTaskRequest;
 import com.pdropalazn.taskforge.tasks.infrastructure.in.web.mapper.TaskWebMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,13 +22,16 @@ public class TaskController {
 
     private final CreateTaskUseCase createTaskUseCase;
     private final GetTaskByIdUseCase getTaskByIdUseCase;
+    private final UpdateTaskUseCase updateTaskUseCase;
     private final TaskWebMapper mapper;
 
     public TaskController(CreateTaskUseCase createTaskUseCase,
                           GetTaskByIdUseCase getTaskByIdUseCase,
+                          UpdateTaskUseCase updateTaskUseCase,
                           TaskWebMapper mapper) {
         this.createTaskUseCase = createTaskUseCase;
         this.getTaskByIdUseCase = getTaskByIdUseCase;
+        this.updateTaskUseCase = updateTaskUseCase;
         this.mapper = mapper;
     }
 
@@ -40,5 +46,14 @@ public class TaskController {
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable String taskId) {
         Task task = getTaskByIdUseCase.getById(TaskId.from(taskId));
         return ResponseEntity.ok(mapper.toResponse(task));
+    }
+
+
+    @PutMapping("/{taskId}")
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable String taskId,
+                                                   @Valid @RequestBody UpdateTaskRequest request) {
+        UpdateTaskCommand command = mapper.toCommand(taskId, request);
+        Task updatedTask = updateTaskUseCase.update(command);
+        return ResponseEntity.ok(mapper.toResponse(updatedTask));
     }
 }
