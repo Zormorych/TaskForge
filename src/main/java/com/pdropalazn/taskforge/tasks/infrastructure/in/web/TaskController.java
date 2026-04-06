@@ -3,6 +3,7 @@ package com.pdropalazn.taskforge.tasks.infrastructure.in.web;
 import com.pdropalazn.taskforge.tasks.domain.model.Task;
 import com.pdropalazn.taskforge.tasks.domain.model.vo.TaskId;
 import com.pdropalazn.taskforge.tasks.domain.port.in.CreateTaskUseCase;
+import com.pdropalazn.taskforge.tasks.domain.port.in.DeleteTaskUseCase;
 import com.pdropalazn.taskforge.tasks.domain.port.in.GetTaskByIdUseCase;
 import com.pdropalazn.taskforge.tasks.domain.port.in.UpdateTaskUseCase;
 import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.CreateTaskCommand;
@@ -21,15 +22,18 @@ import org.springframework.web.bind.annotation.*;
 public class TaskController {
 
     private final CreateTaskUseCase createTaskUseCase;
+    private final DeleteTaskUseCase deleteTaskUseCase;
     private final GetTaskByIdUseCase getTaskByIdUseCase;
     private final UpdateTaskUseCase updateTaskUseCase;
     private final TaskWebMapper mapper;
 
     public TaskController(CreateTaskUseCase createTaskUseCase,
+                          DeleteTaskUseCase deleteTaskUseCase,
                           GetTaskByIdUseCase getTaskByIdUseCase,
                           UpdateTaskUseCase updateTaskUseCase,
                           TaskWebMapper mapper) {
         this.createTaskUseCase = createTaskUseCase;
+        this.deleteTaskUseCase = deleteTaskUseCase;
         this.getTaskByIdUseCase = getTaskByIdUseCase;
         this.updateTaskUseCase = updateTaskUseCase;
         this.mapper = mapper;
@@ -46,6 +50,14 @@ public class TaskController {
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable String taskId) {
         Task task = getTaskByIdUseCase.getById(TaskId.from(taskId));
         return ResponseEntity.ok(mapper.toResponse(task));
+    }
+
+    // DeleteTask: hard delete  task id
+    @DeleteMapping("/{taskId}")
+    public ResponseEntity<Void> deleteTask(@PathVariable String taskId) {
+
+        deleteTaskUseCase.delete(TaskId.from(taskId));
+        return ResponseEntity.noContent().build();
     }
 
 

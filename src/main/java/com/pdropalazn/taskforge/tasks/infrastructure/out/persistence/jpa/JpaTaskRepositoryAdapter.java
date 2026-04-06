@@ -41,4 +41,10 @@ public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
         return springDataTaskRepository.findById(taskId.value())
                 .map(taskJpaMapper::toDomain);
     }
+
+    @Override
+    public void deleteById(TaskId taskId) {
+        // hard delete de la columna en bdd
+        springDataTaskRepository.deleteById(taskId.value());
+    }
 }

@@ -13,4 +13,6 @@ public interface TaskRepositoryPort {
 
     Optional<Task> findById(TaskId taskId);
 
+    void deleteById(TaskId taskId);
+
 }

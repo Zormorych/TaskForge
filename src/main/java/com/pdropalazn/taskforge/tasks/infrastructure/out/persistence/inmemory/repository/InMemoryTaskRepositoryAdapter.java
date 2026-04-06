@@ -29,5 +29,11 @@ public class InMemoryTaskRepositoryAdapter implements TaskRepositoryPort {
         return Optional.ofNullable(temporalStorage.get(taskId));
     }
 
+    @Override
+    public void deleteById(TaskId taskId) {
+        // DeleteTask: remove the task from in-memory storage
+        temporalStorage.remove(taskId);
+    }
+
 
 }
