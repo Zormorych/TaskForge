@@ -28,7 +28,6 @@ public class InMemoryTaskRepositoryAdapter implements TaskRepositoryPort {
 
     @Override
     public List<Task> findAll() {
-        // GetAllTasks: returns every task currently stored in memory
         return temporalStorage.values().stream().toList();
     }
 
@@ -39,7 +38,6 @@ public class InMemoryTaskRepositoryAdapter implements TaskRepositoryPort {
 
     @Override
     public void deleteById(TaskId taskId) {
-        // DeleteTask: remove the task from in-memory storage
         temporalStorage.remove(taskId);
     }
 

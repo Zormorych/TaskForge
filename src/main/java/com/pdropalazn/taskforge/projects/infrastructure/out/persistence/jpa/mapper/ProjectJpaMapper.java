@@ -7,7 +7,7 @@ import com.pdropalazn.taskforge.projects.domain.model.vo.ProjectName;
 import com.pdropalazn.taskforge.projects.infrastructure.out.persistence.jpa.entity.ProjectEntity;
 import org.springframework.stereotype.Component;
 
-// CreateProject: mapper between the Project aggregate and ProjectEntity
+
 @Component
 public class ProjectJpaMapper {
 

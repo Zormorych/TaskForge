@@ -7,7 +7,6 @@ import jakarta.persistence.Table;
 
 import java.util.UUID;
 
-// CreateProject: JPA entity that represents the projects table
 @Entity
 @Table(name = "projects")
 public class ProjectEntity {
@@ -21,8 +20,8 @@ public class ProjectEntity {
     @Column(length = 1000)
     private String description;
 
+    //Constructor vacío para JPA
     protected ProjectEntity() {
-        // CreateProject: default constructor required by JPA
     }
 
     public ProjectEntity(UUID id, String name, String description) {

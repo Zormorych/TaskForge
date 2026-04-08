@@ -39,7 +39,6 @@ public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
 
     @Override
     public List<Task> findAll() {
-        // GetAllTasks: maps every persisted TaskEntity back to the domain model
         return springDataTaskRepository.findAll().stream()
                 .map(taskJpaMapper::toDomain)
                 .toList();

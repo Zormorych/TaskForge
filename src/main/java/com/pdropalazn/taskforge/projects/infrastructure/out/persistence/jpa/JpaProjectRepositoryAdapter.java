@@ -8,7 +8,6 @@ import com.pdropalazn.taskforge.projects.infrastructure.out.persistence.jpa.repo
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-// CreateProject: JPA adapter that persists the Project aggregate
 @Repository
 @Profile("jpa")
 public class JpaProjectRepositoryAdapter implements ProjectRepositoryPort {
@@ -24,7 +23,6 @@ public class JpaProjectRepositoryAdapter implements ProjectRepositoryPort {
 
     @Override
     public Project save(Project project) {
-        // CreateProject: map the aggregate to JPA and back after saving
         ProjectEntity entity = projectJpaMapper.toEntity(project);
         ProjectEntity savedEntity = springDataProjectRepository.save(entity);
         return projectJpaMapper.toDomain(savedEntity);

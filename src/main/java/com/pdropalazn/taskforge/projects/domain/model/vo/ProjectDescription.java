@@ -1,6 +1,5 @@
 package com.pdropalazn.taskforge.projects.domain.model.vo;
 
-// CreateProject: value object that validates the optional project description
 public record ProjectDescription(String description) {
 
     public ProjectDescription {

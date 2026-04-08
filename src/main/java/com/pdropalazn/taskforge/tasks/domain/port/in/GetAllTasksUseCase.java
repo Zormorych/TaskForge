@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface GetAllTasksUseCase {
 
-    // GetAllTasks: input port for listing every existing task
     List<Task> getAll();
 }

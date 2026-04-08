@@ -54,7 +54,6 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAllTasks() {
-        // GetAllTasks: lists every task and maps the domain objects with the existing web mapper
         List<TaskResponse> tasks = getAllTasksUseCase.getAll().stream()
                 .map(mapper::toResponse)
                 .toList();

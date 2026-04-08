@@ -12,7 +12,6 @@ public interface TaskRepositoryPort {
 
     Task save (Task task);
 
-    // GetAllTasks: exposes task listing without coupling domain to persistence details
     List<Task> findAll();
 
     Optional<Task> findById(TaskId taskId);

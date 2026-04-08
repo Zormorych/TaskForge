@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-// CreateProject: in-memory adapter to keep the profile wiring consistent
 @Repository
 @Profile("in-memory")
 public class InMemoryProjectRepositoryAdapter implements ProjectRepositoryPort {
@@ -18,7 +17,6 @@ public class InMemoryProjectRepositoryAdapter implements ProjectRepositoryPort {
 
     @Override
     public Project save(Project project) {
-        // CreateProject: store the project in memory for the in-memory profile
         temporalStorage.put(project.getProjectId(), project);
         return project;
     }

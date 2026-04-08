@@ -18,7 +18,6 @@ public class GetAllTasksService implements GetAllTasksUseCase {
 
     @Override
     public List<Task> getAll() {
-        // GetAllTasks: delegates listing to the repository port and preserves empty-list behavior
         return taskRepository.findAll();
     }
 }
