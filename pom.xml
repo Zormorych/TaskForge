@@ -53,7 +53,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Opcional: activar solo si acaba entrando feature createUser y un login-->
+		<!-- Opcional, activar solo si acaba entrando feature createUser y un login-->
 		<!--
         <dependency>
             <groupId>org.springframework.boot</groupId>

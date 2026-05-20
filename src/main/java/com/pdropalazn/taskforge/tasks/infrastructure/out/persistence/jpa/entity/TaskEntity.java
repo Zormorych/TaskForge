@@ -29,7 +29,6 @@ public class TaskEntity {
     @Enumerated(EnumType.STRING)
     private TaskPriority priority;
 
-
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
