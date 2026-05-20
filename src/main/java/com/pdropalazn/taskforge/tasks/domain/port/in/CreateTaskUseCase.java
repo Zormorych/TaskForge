@@ -8,6 +8,6 @@ import com.pdropalazn.taskforge.tasks.domain.model.Task;
 //el caso de uso
 public interface CreateTaskUseCase {
 
-Task create (CreateTaskCommand command);
+    Task create(CreateTaskCommand command);
 
 }

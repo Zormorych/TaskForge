@@ -20,7 +20,7 @@ public class ProjectEntity {
     @Column(length = 1000)
     private String description;
 
-    //Constructor vacío para JPAid, name y description si
+    //Constructor vacío para JPA
     protected ProjectEntity() {
     }
 

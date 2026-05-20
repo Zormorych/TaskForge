@@ -22,7 +22,7 @@ public class Task {
 
     private Task(TaskId taskId, UUID projectId, TaskTitle title,
                  TaskDescription description, TaskPriority priority,
-                 LocalDateTime dueDate, UserId userAssignedId){
+                 LocalDateTime dueDate, UserId userAssignedId) {
 
         this.taskId = taskId;
         this.projectId = projectId;
@@ -85,27 +85,27 @@ public class Task {
     }
 
 
-    public void changeTitle(TaskTitle newTitle){
+    public void changeTitle(TaskTitle newTitle) {
         this.title = newTitle;
     }
 
-    public void changeDescription(TaskDescription newDescription){
+    public void changeDescription(TaskDescription newDescription) {
         this.description = newDescription;
     }
 
-    public void changeStatus(TaskStatus newStatus){
+    public void changeStatus(TaskStatus newStatus) {
         this.status = newStatus;
     }
 
-    public void changePriority(TaskPriority newPriority){
+    public void changePriority(TaskPriority newPriority) {
         this.priority = newPriority;
     }
 
-    public void changeDueDate(LocalDateTime newDueDate){
+    public void changeDueDate(LocalDateTime newDueDate) {
         this.dueDate = newDueDate;
     }
 
-    public void assignToUser(UserId userAssignedId){
+    public void assignToUser(UserId userAssignedId) {
         this.userAssignedId = userAssignedId;
     }
 
@@ -123,9 +123,9 @@ public class Task {
 
     //Static Factory de reconstruccion de tarea para el mapper de persistencia
 
-    public static Task reconstructTask (TaskId taskId, UUID projectId, TaskTitle title,
-                                    TaskDescription description,TaskStatus status, TaskPriority priority,
-                                    LocalDateTime dueDate, UserId userAssignedId) {
+    public static Task reconstructTask(TaskId taskId, UUID projectId, TaskTitle title,
+                                       TaskDescription description, TaskStatus status, TaskPriority priority,
+                                       LocalDateTime dueDate, UserId userAssignedId) {
         Task task = new Task(taskId, projectId, title, description, priority, dueDate, userAssignedId);
         task.changeStatus(status);
         return task;

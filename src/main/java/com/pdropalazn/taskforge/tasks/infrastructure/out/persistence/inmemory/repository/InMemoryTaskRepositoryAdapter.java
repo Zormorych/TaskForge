@@ -21,8 +21,8 @@ public class InMemoryTaskRepositoryAdapter implements TaskRepositoryPort {
     private final Map<TaskId, Task> temporalStorage = new ConcurrentHashMap<>(); //esto hace que lo que guardo viva en memoria RAM, cuando la app la cierro se libera
 
     @Override
-    public Task save (Task task){
-        temporalStorage.put(task.getTaskId(),task);
+    public Task save(Task task) {
+        temporalStorage.put(task.getTaskId(), task);
         return task;
     }
 

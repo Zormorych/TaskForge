@@ -8,7 +8,6 @@ import com.pdropalazn.taskforge.tasks.domain.port.repository.TaskRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Service
 public class UpdateTaskService implements UpdateTaskUseCase {
 

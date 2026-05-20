@@ -6,19 +6,18 @@ import com.pdropalazn.taskforge.tasks.application.usecase.port.dto.CreateTaskCom
 import com.pdropalazn.taskforge.tasks.domain.port.repository.TaskRepositoryPort;
 import org.springframework.stereotype.Service;
 
-
 //implementacion del caso de uso
 @Service
 public class CreateTaskService implements CreateTaskUseCase {
 
     private final TaskRepositoryPort taskRepository;
 
-    public CreateTaskService (TaskRepositoryPort taskRepository){
+    public CreateTaskService(TaskRepositoryPort taskRepository) {
         this.taskRepository = taskRepository;
     }
 
     @Override
-    public Task create (CreateTaskCommand command){
+    public Task create(CreateTaskCommand command) {
         Task task = Task.create(
                 command.projectId(),
                 command.title(),
@@ -27,7 +26,7 @@ public class CreateTaskService implements CreateTaskUseCase {
                 command.dueDate(),
                 command.assigneeId()
         );
-    return taskRepository.save(task);
+        return taskRepository.save(task);
     }
 
 }

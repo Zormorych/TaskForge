@@ -6,7 +6,7 @@ import com.pdropalazn.taskforge.projects.domain.port.in.CreateProjectUseCase;
 import com.pdropalazn.taskforge.projects.domain.port.repository.ProjectRepositoryPort;
 import org.springframework.stereotype.Service;
 
-// CreateProject: application service that creates and persists a project
+
 @Service
 public class CreateProjectService implements CreateProjectUseCase {
 
@@ -18,7 +18,7 @@ public class CreateProjectService implements CreateProjectUseCase {
 
     @Override
     public Project create(CreateProjectCommand command) {
-        // CreateProject: delegate aggregate creation to the domain model
+
         Project project = Project.create(command.name(), command.description());
         return projectRepository.save(project);
     }

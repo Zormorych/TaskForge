@@ -22,7 +22,7 @@ import java.util.Optional;
 public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
 
     private final SpringDataTaskRepository springDataTaskRepository;
-    private final TaskJpaMapper  taskJpaMapper;
+    private final TaskJpaMapper taskJpaMapper;
 
     public JpaTaskRepositoryAdapter(SpringDataTaskRepository springDataTaskRepository,
                                     TaskJpaMapper taskJpaMapper) {
@@ -52,7 +52,7 @@ public class JpaTaskRepositoryAdapter implements TaskRepositoryPort {
 
     @Override
     public void deleteById(TaskId taskId) {
-        // hard delete de la columna en bdd
+        // borrado fisico de la columna en bdd
         springDataTaskRepository.deleteById(taskId.value());
     }
 }

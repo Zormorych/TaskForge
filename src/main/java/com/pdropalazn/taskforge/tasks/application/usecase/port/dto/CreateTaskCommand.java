@@ -19,4 +19,5 @@ public record CreateTaskCommand(
         TaskPriority priority,
         LocalDateTime dueDate,
         UserId assigneeId
-) { }
+) {
+}
